@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
 
+
+print('hello')
 path = 'C:/'
 for file in os.listdir(path):
     if os.path.isdir(path+file):
