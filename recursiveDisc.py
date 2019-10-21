@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
+import json
 
+results = {}
 
 def check(path):
     folders = []
@@ -11,7 +13,9 @@ def check(path):
             filePath = path+'/'+file
 
             if os.path.isdir(filePath):
-                print(file, os.path.getsize('{}'.format(filePath)))
+                size = os.path.getsize('{}'.format(filePath))
+                print(file, size)
+                results[filePath] = size
                 folders.append(filePath)
             else:
                 print(file, os.path.getsize('{}'.format(filePath)))
@@ -24,3 +28,5 @@ def check(path):
 
 if __name__ == '__main__':
     check('C:/')
+    with open('results.json', 'w', encoding='utf-8') as f:
+        json.dump(results, f)
